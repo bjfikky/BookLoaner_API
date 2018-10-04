@@ -1,5 +1,7 @@
 from flask import Flask
 
+import models
+
 app = Flask(__name__)
 
 
@@ -9,4 +11,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
+    models.initialize()
     app.run(debug=True)
