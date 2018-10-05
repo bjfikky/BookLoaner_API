@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_restful import Resource, reqparse, Api, fields, marshal_with
+from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal
 
 import models
 
@@ -22,12 +22,12 @@ class StudentList(Resource):
         super().__init__()
 
     def get(self):
-        return jsonify({'students': [
-            {'fullname': 'Benjamin Orimoloye'},
-            {'fullname': 'James Doe'},
-            {'fullname': 'Jimmy Tillerson'},
-        ]
-        })
+        students = []
+
+        for student in models.Student.select():
+            students.append(marshal(student, student_fields))
+
+        return {'students': students}
 
     @marshal_with(student_fields)
     def post(self):
