@@ -33,3 +33,36 @@ class BookList(Resource):
         )
 
         super().__init__()
+
+    def get(self):
+        return jsonify({
+            'books': [
+                {
+                    'title': 'Software Engineering',
+                    'author': 'Ian Sommerville',
+                    'edition': 9,
+                    'genre': 'Software Development',
+                    'available': True
+                },
+                {
+                    'title': 'IT Strategy',
+                    'author': 'James McKeen',
+                    'edition': 3,
+                    'genre': 'IT Management',
+                    'available': False
+                }
+            ]
+        })
+
+    def post(self):
+
+
+
+books_api = Blueprint('resources.books', __name__)
+api = Api(books_api)
+api.add_resource(
+    BookList,
+    '/books',
+    endpoint='books'
+)
+
