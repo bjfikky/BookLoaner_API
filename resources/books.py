@@ -1,7 +1,18 @@
-from flask import Blueprint, jsonify
+import json
+
+from flask import Blueprint, jsonify, make_response
 from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, inputs
 
 import models
+
+
+book_fields = {
+    'title': fields.String,
+    'author': fields.String,
+    'edition': fields.Integer,
+    'genre': fields.String,
+    'available': fields.Boolean
+}
 
 
 class BookList(Resource):
@@ -35,27 +46,21 @@ class BookList(Resource):
         super().__init__()
 
     def get(self):
-        return jsonify({
-            'books': [
-                {
-                    'title': 'Software Engineering',
-                    'author': 'Ian Sommerville',
-                    'edition': 9,
-                    'genre': 'Software Development',
-                    'available': True
-                },
-                {
-                    'title': 'IT Strategy',
-                    'author': 'James McKeen',
-                    'edition': 3,
-                    'genre': 'IT Management',
-                    'available': False
-                }
-            ]
-        })
+        books = []
+
+        for book in models.Book.select():
+            books.append(marshal(book, book_fields))
+        return {'books': books}
 
     def post(self):
+        args = self.reqparse.parse_args()
 
+        if models.Book.select()\
+                .where(models.Book.title == args.get('title') & models.Book.author == args.get('author')).get():
+            return make_response(json.dumps({'error': 'A book with the same title and author already exists'}), 409)
+
+        books = models.Book.create(**args)
+        return marshal(models.Book.get_by_id(books.id), book_fields)
 
 
 books_api = Blueprint('resources.books', __name__)
