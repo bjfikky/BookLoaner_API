@@ -2,7 +2,10 @@ from flask import Flask
 
 import models
 
+from  resources.students import students_api
+
 app = Flask(__name__)
+app.register_blueprint(students_api, url_prefix='/api/v1')
 
 
 @app.route('/')
