@@ -3,9 +3,8 @@ import datetime
 from peewee import *
 from argon2 import PasswordHasher
 
-DATABASE = MySQLDatabase('BookLoaner', user='root', password='root', host='127.0.0.1', port=8889)
-
-SECRET_KEY = 'GD8794B38BS7793BSISJKJW'
+from config.db import DATABASE
+from config.keys import SECRET_KEY
 
 
 class User(Model):
