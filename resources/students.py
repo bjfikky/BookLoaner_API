@@ -67,7 +67,7 @@ class Student(Resource):
     def get(self, id):
         try:
             student = models.Student.get_by_id(id)
-        except models.Student.DoesNotExist:
+        except models.DoesNotExist:
             abort(404, message="Student {} does not exist".format(id))
         else:
             return student
@@ -82,7 +82,7 @@ class Student(Resource):
     def delete(self, id):
         try:
             models.Student.delete_by_id(id)
-        except models.Student.DoesNotExist:
+        except models.DoesNotExist:
             abort(404, message="Student {} does not exist".format(id))
         else:
             return make_response(json.dumps({'success': 'Student has been successfully deleted'}), 200)

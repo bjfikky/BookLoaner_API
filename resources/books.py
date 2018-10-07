@@ -1,7 +1,7 @@
 import json
 
 from flask import Blueprint, jsonify, make_response
-from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, inputs
+from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, inputs, abort
 
 import models
 
@@ -55,12 +55,54 @@ class BookList(Resource):
     def post(self):
         args = self.reqparse.parse_args()
 
-        if models.Book.select()\
-                .where(models.Book.title == args.get('title') & models.Book.author == args.get('author')).get():
+        try:
+            models.Book.select()\
+                .where((models.Book.title == args.get('title')) & (models.Book.author == args.get('author'))).get()
+        except models.DoesNotExist:
+            books = models.Book.create(**args)
+            return marshal(models.Book.get_by_id(books.id), book_fields)
+        else:
             return make_response(json.dumps({'error': 'A book with the same title and author already exists'}), 409)
 
-        books = models.Book.create(**args)
-        return marshal(models.Book.get_by_id(books.id), book_fields)
+
+class Book(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument(
+            'title',
+            required=True,
+            help='No book title provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'author',
+            required=True,
+            help='No book author provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'edition',
+            type=inputs.positive,
+            help='No book title provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'genre',
+            required=True,
+            help='No book title provided',
+            location=['form', 'json']
+        )
+
+        super().__init__()
+
+    @marshal_with(book_fields)
+    def get(self, id):
+        try:
+            book = models.Book.get_by_id(id)
+        except models.DoesNotExist:
+            abort(404, message="Book {} does not exist".format(id))
+        else:
+            return book
 
 
 books_api = Blueprint('resources.books', __name__)
