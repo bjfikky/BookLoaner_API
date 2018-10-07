@@ -57,7 +57,11 @@ class Student(Resource):
         else:
             return student
 
-
+    def put(self, id):
+        args = self.reqparse.parse_args()
+        query = models.Student.update(**args).where(models.Student.id == id)
+        query.execute()
+        return models.Student.get_by_id(id), 200, {'Location': url_for('resources.students.student', id=id)}
 
 
 students_api = Blueprint('resources.students', __name__)
