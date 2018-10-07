@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify
-from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal
+from flask import Blueprint, jsonify, url_for
+from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, abort
 
 import models
 
@@ -36,6 +36,30 @@ class StudentList(Resource):
         return student.get_by_id(student.id)
 
 
+class Student(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument(
+            'fullname',
+            required=True,
+            help='No student full name provided',
+            location=['form', 'json']
+        )
+
+        super().__init__()
+
+    @marshal_with(student_fields)
+    def get(self, id):
+        try:
+            student = models.Student.get_by_id(id)
+        except models.Student.DoesNotExist:
+            abort(404, message="Student {} does not exist".format(id))
+        else:
+            return student
+
+
+
+
 students_api = Blueprint('resources.students', __name__)
 api = Api(students_api)
 
@@ -43,4 +67,10 @@ api.add_resource(
     StudentList,
     '/students',
     endpoint='students'
+)
+
+api.add_resource(
+    Student,
+    '/students/<int:id>',
+    endpoint='student'
 )

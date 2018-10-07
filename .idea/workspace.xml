@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26e6994d-f3c4-4bff-a095-7724a48e377c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/books.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/books.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/students.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/students.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,13 +24,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="7" />
-          <entry key="py" value="2315" />
+          <entry key="py" value="2520" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="2315" />
+          <entry key="Python" value="2520" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -77,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/books.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
+            <state relative-caret-position="374">
               <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -89,14 +89,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/students.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="1" lean-forward="true" selection-start-line="38" selection-end-line="45" selection-end-column="1" />
+            <state relative-caret-position="631">
+              <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
-                <marker date="1538749448218" expanded="true" signature="216:221" ph="..." />
+                <marker date="1538939520201" expanded="true" signature="223:228" ph="..." />
+                <marker date="1538939520201" expanded="true" signature="918:1485" ph="..." />
               </folding>
             </state>
           </provider>
@@ -119,13 +120,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/resources/__init__.py" />
-        <option value="$PROJECT_DIR$/resources/students.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config/db.py" />
         <option value="$PROJECT_DIR$/config/keys.py" />
         <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/resources/books.py" />
+        <option value="$PROJECT_DIR$/resources/students.py" />
       </list>
     </option>
   </component>
@@ -259,11 +260,11 @@
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.19877942" />
+      <window_info anchor="bottom" id="Terminal" weight="0.19877942" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21708806" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21708806" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -331,23 +332,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/students.py">
+    <entry file="file://$PROJECT_DIR$/resources/books.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="1" lean-forward="true" selection-start-line="38" selection-end-line="45" selection-end-column="1" />
+        <state relative-caret-position="374">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
-            <element signature="e#0#36#0" expanded="true" />
-            <marker date="1538749448218" expanded="true" signature="216:221" ph="..." />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/books.py">
+    <entry file="file://$PROJECT_DIR$/resources/students.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        <state relative-caret-position="631">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
+            <marker date="1538939520201" expanded="true" signature="223:228" ph="..." />
+            <marker date="1538939520201" expanded="true" signature="918:1485" ph="..." />
           </folding>
         </state>
       </provider>
