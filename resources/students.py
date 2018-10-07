@@ -1,4 +1,6 @@
-from flask import Blueprint, jsonify, url_for
+import json
+
+from flask import Blueprint, jsonify, url_for, make_response
 from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, abort
 
 import models
@@ -57,11 +59,20 @@ class Student(Resource):
         else:
             return student
 
+    @marshal_with(student_fields)
     def put(self, id):
         args = self.reqparse.parse_args()
         query = models.Student.update(**args).where(models.Student.id == id)
         query.execute()
         return models.Student.get_by_id(id), 200, {'Location': url_for('resources.students.student', id=id)}
+
+    def delete(self, id):
+        try:
+            models.Student.delete_by_id(id)
+        except models.Student.DoesNotExist:
+            abort(404, message="Student {} does not exist".format(id))
+        else:
+            return make_response(json.dumps({'success': 'Student has been successfully deleted'}), 200)
 
 
 students_api = Blueprint('resources.students', __name__)
