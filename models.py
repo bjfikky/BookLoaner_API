@@ -18,6 +18,7 @@ class User(Model):
 
 class Student(Model):
     fullname = CharField()
+    passcode = CharField()
 
     class Meta:
         database = DATABASE

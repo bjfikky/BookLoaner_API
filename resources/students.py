@@ -7,7 +7,8 @@ import models
 
 
 student_fields = {
-    'fullname': fields.String
+    'fullname': fields.String,
+    'passcode': fields.String
 }
 
 
@@ -18,6 +19,12 @@ class StudentList(Resource):
             'fullname',
             required=True,
             help='No student full name provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'passcode',
+            required=True,
+            help='No student passcode provided',
             location=['form', 'json']
         )
 
@@ -45,6 +52,12 @@ class Student(Resource):
             'fullname',
             required=True,
             help='No student full name provided',
+            location=['form', 'json']
+        )
+        self.reqparse.add_argument(
+            'passcode',
+            required=True,
+            help='No student passcode provided',
             location=['form', 'json']
         )
 
