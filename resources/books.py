@@ -7,6 +7,7 @@ import models
 
 
 book_fields = {
+    'id': fields.Integer,
     'title': fields.String,
     'author': fields.String,
     'edition': fields.Integer,

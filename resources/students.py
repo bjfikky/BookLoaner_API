@@ -7,6 +7,7 @@ import models
 
 
 student_fields = {
+    'id': fields.Integer,
     'fullname': fields.String,
     'passcode': fields.String
 }
