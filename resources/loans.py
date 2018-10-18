@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask_restful import Resource, reqparse, inputs, fields, marshal_with, Api
+from flask_restful import Resource, reqparse, inputs, fields, marshal_with, Api, marshal
 
 import models
 
@@ -42,6 +42,9 @@ class LoanList(Resource):
 
     def get(self):
         loans = []
+
+        for loan in models.Loan.select():
+            loans.append(marshal(loan, loan_fields))
         return {'loans': loans}
 
     @marshal_with(loan_fields)
