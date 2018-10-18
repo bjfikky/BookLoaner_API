@@ -5,12 +5,29 @@ from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal
 
 import models
 
+book_fields = {
+    'id': fields.Integer,
+    'title': fields.String,
+    'author': fields.String,
+    'edition': fields.Integer,
+    'genre': fields.String,
+}
 
 student_fields = {
     'id': fields.Integer,
     'fullname': fields.String,
-    'passcode': fields.String
+    'passcode': fields.String,
+    'loans': fields.List(fields.Nested(book_fields))
 }
+
+
+@marshal_with(book_fields)
+def add_loans(student):
+    student.loans = []
+    for loan in student.books_loaned:
+        book = models.Book.get_by_id(loan.book)
+        student.loans.append(book)
+    return student.loans
 
 
 class StudentList(Resource):
@@ -35,6 +52,7 @@ class StudentList(Resource):
         students = []
 
         for student in models.Student.select():
+            student.loans = add_loans(student)
             students.append(marshal(student, student_fields))
 
         return {'students': students}
