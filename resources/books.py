@@ -108,9 +108,16 @@ class Book(Resource):
 
 books_api = Blueprint('resources.books', __name__)
 api = Api(books_api)
+
 api.add_resource(
     BookList,
     '/books',
     endpoint='books'
+)
+
+api.add_resource(
+    Book,
+    '/books/<int:id>',
+    endpoint='book'
 )
 

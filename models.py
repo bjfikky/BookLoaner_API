@@ -35,10 +35,10 @@ class Book(Model):
 
 
 class Loan(Model):
-    student = ForeignKeyField(Student, related_name='books_loaned')
-    book = ForeignKeyField(Book, related_name='loaned_by')
+    student = ForeignKeyField(Student, backref='books_loaned')
+    book = ForeignKeyField(Book, backref='loaned_by')
     loan_date = DateTimeField(default=datetime.datetime.now)
-    return_date = DateTimeField()
+    return_date = DateTimeField(null=False)
 
     class Meta:
         database = DATABASE

@@ -1,4 +1,7 @@
-from flask_restful import Resource, reqparse, inputs, fields
+from flask import Blueprint
+from flask_restful import Resource, reqparse, inputs, fields, marshal_with, Api
+
+import models
 
 loan_fields = {
     'id': fields.Integer,
@@ -37,6 +40,16 @@ class LoanList(Resource):
 
         super().__init__()
 
+    def get(self):
+        loans = []
+        return {'loans': loans}
+
+    @marshal_with(loan_fields)
+    def post(self):
+        args = self.reqparse.parse_args()
+        loan = models.Loan.create(**args)
+        return models.Loan.get_by_id(loan.id)
+
 
 class Loan(Resource):
     def __init__(self):
@@ -65,3 +78,13 @@ class Loan(Resource):
         )
 
         super().__init__()
+
+
+loans_api = Blueprint('resources.loans', __name__)
+api = Api(loans_api)
+
+api.add_resource(
+    LoanList,
+    '/loans',
+    endpoint='loans'
+)
