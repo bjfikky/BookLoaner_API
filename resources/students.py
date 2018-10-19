@@ -1,5 +1,9 @@
 import json
 
+from datetime import datetime
+import time
+from email import utils
+
 from flask import Blueprint, jsonify, url_for, make_response
 from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, abort
 
@@ -11,6 +15,8 @@ book_fields = {
     'author': fields.String,
     'edition': fields.Integer,
     'genre': fields.String,
+    'loan_date': fields.String,
+    'return_date': fields.String
 }
 
 student_fields = {
@@ -21,11 +27,20 @@ student_fields = {
 }
 
 
+def format_date(date):
+    if date:
+        return datetime.strftime(date, "%b %d %Y %H:%M:%S")
+    return date
+
+
 @marshal_with(book_fields)
 def add_loans(student):
     student.loans = []
-    for loan in student.books_loaned:
-        book = models.Book.get_by_id(loan.book)
+    for book_loaned in student.books_loaned:
+        book = models.Book.get_by_id(book_loaned.book)
+        for loan in models.Loan.select().where((models.Loan.book == book.id) & (models.Loan.student == student.id)):
+            book.loan_date = format_date(loan.loan_date)
+            book.return_date = format_date(loan.return_date)
         student.loans.append(book)
     return student.loans
 
