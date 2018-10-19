@@ -25,8 +25,11 @@ student_fields = {
 def add_loans(student):
     student.loans = []
     for loan in student.books_loaned:
-        book = models.Book.get_by_id(loan.book)
-        student.loans.append(book)
+
+        # check if book has not been returned i.e. return date is empty
+        if not loan.return_date:
+            book = models.Book.get_by_id(loan.book)
+            student.loans.append(book)
     return student.loans
 
 

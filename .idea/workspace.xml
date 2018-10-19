@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26e6994d-f3c4-4bff-a095-7724a48e377c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/students.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/students.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,13 +28,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="7" />
-          <entry key="py" value="3978" />
+          <entry key="py" value="4095" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="3978" />
+          <entry key="Python" value="4095" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -108,13 +109,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/students.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="340">
+              <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1539906587861" expanded="true" signature="553:725" ph="..." />
-                <marker date="1539906587861" expanded="true" signature="753:758" ph="..." />
-                <marker date="1539906587861" expanded="true" signature="1679:3041" ph="..." />
+                <marker date="1539907327225" expanded="true" signature="553:839" ph="..." />
+                <marker date="1539907327225" expanded="true" signature="867:872" ph="..." />
+                <marker date="1539907327225" expanded="true" signature="1793:3155" ph="..." />
               </folding>
             </state>
           </provider>
@@ -338,6 +339,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/books.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="27" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -345,16 +356,6 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <marker date="1539905394853" expanded="true" signature="159:307" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/books.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="27" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -373,13 +374,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/students.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1539906587861" expanded="true" signature="553:725" ph="..." />
-            <marker date="1539906587861" expanded="true" signature="753:758" ph="..." />
-            <marker date="1539906587861" expanded="true" signature="1679:3041" ph="..." />
+            <marker date="1539907327225" expanded="true" signature="553:839" ph="..." />
+            <marker date="1539907327225" expanded="true" signature="867:872" ph="..." />
+            <marker date="1539907327225" expanded="true" signature="1793:3155" ph="..." />
           </folding>
         </state>
       </provider>
