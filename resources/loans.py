@@ -91,3 +91,10 @@ api.add_resource(
     '/loans',
     endpoint='loans'
 )
+
+api.add_resource(
+    Loan,
+    '/loans/<int:id>',
+    endpoint='loan'
+)
+
