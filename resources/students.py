@@ -9,8 +9,10 @@ from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal
 
 import models
 
+
 book_fields = {
-    'id': fields.Integer,
+    'loan_id': fields.Integer,
+    'book_id': fields.Integer,
     'title': fields.String,
     'author': fields.String,
     'edition': fields.Integer,
@@ -29,19 +31,26 @@ student_fields = {
 
 def format_date(date):
     if date:
-        return datetime.strftime(date, "%b %d %Y %H:%M:%S")
+        return datetime.strptime(date, "%b %d %Y %H:%M:%S")
     return date
 
 
 @marshal_with(book_fields)
 def add_loans(student):
     student.loans = []
-    for book_loaned in student.books_loaned:
-        book = models.Book.get_by_id(book_loaned.book)
-        for loan in models.Loan.select().where((models.Loan.book == book.id) & (models.Loan.student == student.id)):
-            book.loan_date = format_date(loan.loan_date)
-            book.return_date = format_date(loan.return_date)
-        student.loans.append(book)
+
+    for row in models.Book.select(
+            models.Loan.id.alias('loan_id'),
+            models.Book.id.alias('book_id'),
+            models.Book.title,
+            models.Book.author,
+            models.Loan.loan_date
+    ).join(models.Loan).where(student.id == models.Loan.student).dicts():
+
+        row['loan_date'] = row['loan_date'].strftime("%b %d %Y %H:%M:%S")
+        student.loans.append(row)
+        # print(row)
+
     return student.loans
 
 
