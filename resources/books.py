@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, jsonify, make_response
+from flask import Blueprint, jsonify, make_response, url_for
 from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, inputs, abort
 
 import models
@@ -104,6 +104,15 @@ class Book(Resource):
             abort(404, message="Book {} does not exist".format(id))
         else:
             return book
+
+    @marshal_with(book_fields)
+    def put(self, id):
+        args = self.reqparse.parse_args()
+        query = models.Book.update(**args).where(models.Book.id == id)
+        query.execute()
+        return models.Book.get_by_id(id), 200, {'Location': url_for('resources.books.book', id=id)}
+
+#     TODO: DELETE METHOD
 
 
 books_api = Blueprint('resources.books', __name__)

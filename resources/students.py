@@ -1,8 +1,6 @@
 import json
 
 from datetime import datetime
-import time
-from email import utils
 
 from flask import Blueprint, jsonify, url_for, make_response
 from flask_restful import Resource, reqparse, Api, fields, marshal_with, marshal, abort
@@ -16,7 +14,6 @@ book_fields = {
     'title': fields.String,
     'author': fields.String,
     'edition': fields.Integer,
-    'genre': fields.String,
     'loan_date': fields.String,
     'return_date': fields.String
 }
@@ -44,6 +41,7 @@ def add_loans(student):
             models.Book.id.alias('book_id'),
             models.Book.title,
             models.Book.author,
+            models.Book.edition,
             models.Loan.loan_date
     ).join(models.Loan).where(student.id == models.Loan.student).dicts():
 
