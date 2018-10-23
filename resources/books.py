@@ -112,7 +112,7 @@ class Book(Resource):
         query.execute()
         return models.Book.get_by_id(id), 200, {'Location': url_for('resources.books.book', id=id)}
 
-#     TODO: DELETE METHOD
+# TODO: DELETE METHOD
 
 
 books_api = Blueprint('resources.books', __name__)

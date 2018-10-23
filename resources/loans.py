@@ -82,6 +82,12 @@ class Loan(Resource):
 
         super().__init__()
 
+# TODO: ADD GET SINGLE LOAN METHOD
+
+# TODO: ADD PUT LOAN METHOD
+
+# TODO: ADD DELETE LOAN METHOD
+
 
 loans_api = Blueprint('resources.loans', __name__)
 api = Api(loans_api)
