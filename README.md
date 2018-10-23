@@ -58,4 +58,4 @@ Front-end built with **VueJS**. See [Github](https://github.com/bjfikky/BookLoan
     
 ## Sample Response
 
-![Sample Response](https://www.flickr.com/gp/167588495@N05/8gbi7b)
+![Sample Response](https://github.com/bjfikky/BookLoaner_API/blob/master/sample_request.png)
